@@ -18,7 +18,11 @@ export default function LinkForm({ setFormInView }) {
   function handleSubmit(event) {
     event.preventDefault()
 
-    window.alert(JSON.stringify(formData))
+    const links = JSON.parse(localStorage.getItem('links')) || []
+
+    links.push(formData)
+    localStorage.setItem('links', JSON.stringify(links))
+    setFormInView(false)
   }
 
   return (
