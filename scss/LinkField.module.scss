@@ -1,0 +1,38 @@
+.link {
+  gap: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.type {
+  padding: 30px 35px 15px;
+  font-size: 20px;
+}
+.title {
+  padding: 0px 35px 25px;
+}
+.status {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 14px;
+  & > div {
+    padding: 10px 15px;
+    color: #4f4f4f;
+    background: #eee;
+    border-top: 1px solid #ddd;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    &:hover {
+      border-top: 1px solid #bbb;
+      background: #e8e8e8;
+    }
+    &.selected {
+      color: #5284ce;
+      background: #c5d9f6;
+      border-top: 1px solid #a5c5f5;
+    }
+  }
+  & > div:not(:last-child) {
+    border-right: 1px solid #ddd;
+  }
+}
+
