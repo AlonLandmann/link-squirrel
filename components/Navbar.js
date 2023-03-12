@@ -2,23 +2,35 @@ import { useUser } from '@auth0/nextjs-auth0/client'
 import css from '@/scss/Navbar.module.scss'
 
 export default function Navbar() {
-  const { user, error, isLoading } = useUser()
+  const { user } = useUser()
 
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>{error.message}</div>
+  console.log(user)
 
   return (
     <div className={css.container}>
       <div className={css.center}>
-        <div>link squirrel</div>
-        <div className={css.navLinks}>
-          <div>About</div>
-          <div>Contact</div>
-          {user
-            ? <div><a href='/api/auth/logout'>Log out</a></div>
-            : <div><a href='/api/auth/login'>Log in</a></div>
-          }
+        <div className={css.logo}>
+          <div>link</div><div>squirrel</div>
         </div>
+        <nav className={css.navLinks}>
+          <div>discover</div>
+          <div>bookmarks</div>
+          <div>contact</div>
+        </nav>
+        {!user &&
+          <div className={css.loginButton}>
+            <button onClick={() => { location.replace('api/auth/login') }}>
+              Login
+            </button>
+          </div>
+        }
+        {user &&
+          <div className={css.accountButton}>
+            <button onClick={() => { location.replace('api/auth/logout') }}>
+              {user.email.slice(0, 2).toUpperCase()}
+            </button>
+          </div>
+        }
       </div>
     </div>
   )
