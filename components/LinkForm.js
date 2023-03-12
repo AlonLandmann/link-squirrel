@@ -3,8 +3,8 @@ import css from '@/scss/LinkForm.module.scss'
 
 export default function LinkForm({ setFormInView }) {
   const [formData, setFormData] = useState({
-    href: '',
     title: '',
+    href: '',
     type: '',
     status: ''
   })
@@ -33,18 +33,18 @@ export default function LinkForm({ setFormInView }) {
         </div>
         <form onSubmit={handleSubmit}>
           <input
-            name='href'
-            value={formData.href}
-            onChange={handleChange}
-            type='text'
-            placeholder='url'
-          />
-          <input
             name='title'
             value={formData.title}
             onChange={handleChange}
             type='text'
             placeholder='title'
+          />
+          <input
+            name='href'
+            value={formData.href}
+            onChange={handleChange}
+            type='text'
+            placeholder='url'
           />
           <select
             name='type'

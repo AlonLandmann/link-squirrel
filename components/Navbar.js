@@ -13,7 +13,7 @@ export default function Navbar() {
         </div>
         <nav className={css.navLinks}>
           <div>discover</div>
-          <div>bookmarks</div>
+          <div>my links</div>
           <div>contact</div>
         </nav>
         {!user &&
