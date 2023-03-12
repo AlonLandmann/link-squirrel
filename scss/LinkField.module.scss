@@ -1,15 +1,29 @@
 .link {
+  position: relative;
   gap: 20px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 2px #ccc;
+  }
+}
+.linkIcon {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 15px;
+  color: #bbb;
+  transition: all 0.5s ease;
 }
 .type {
-  padding: 30px 35px 15px;
+  padding: 40px 40px 15px;
   font-size: 20px;
   color: #555;
 }
 .title {
-  padding: 0px 35px 25px;
+  padding: 0px 40px 35px;
 }
 .status {
   display: grid;
