@@ -30,12 +30,10 @@
 .navLinks {
   display: flex;
   align-items: center;
-
-  &>div {
+  & > div {
     padding: 10px 15px;
     cursor: pointer;
     transition: all 0.15s ease-in-out;
-
     &:hover {
       color: #aaa;
     }
