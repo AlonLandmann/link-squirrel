@@ -13,25 +13,26 @@ export default function Home() {
 
       <div>
         <div className={css.center}>
+          <h1>library</h1>
 
           <div className={css.links}>
             <LinkField
               title='Essence of Linear Algebra'
               href='https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab'
               type='collection-play-fill'
-              status='saved'
+              initialStatus='saved'
             />
             <LinkField
               title='Linear algebra done right'
               href='https://linear.axler.net/'
               type='book'
-              status='in focus'
+              initialStatus='in focus'
             />
             <LinkField
               title='Learn React'
               href='https://scrimba.com/learn/learnreact'
               type='laptop'
-              status='completed'
+              initialStatus='completed'
             />
           </div>
 
