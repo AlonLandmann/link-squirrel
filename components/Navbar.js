@@ -1,5 +1,5 @@
 import { useUser } from '@auth0/nextjs-auth0/client'
-import css from '@/css/Navbar.module.css'
+import css from '@/scss/Navbar.module.scss'
 
 export default function Navbar() {
   const { user, error, isLoading } = useUser()

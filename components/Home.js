@@ -1,5 +1,5 @@
 import Navbar from './Navbar'
-import css from '@/css/Home.module.css'
+import css from '@/scss/Home.module.scss'
 
 export default function Home() {
   return (
