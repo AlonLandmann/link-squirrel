@@ -67,7 +67,7 @@ export default function LinkForm({ setFormInView }) {
             onChange={handleChange}
           >
             <option value=''>- status -</option>
-            <option value='bookmarked'>bookmarked</option>
+            <option value='saved'>saved</option>
             <option value='in focus'>in focus</option>
             <option value='completed'>completed</option>
           </select>

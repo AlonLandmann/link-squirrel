@@ -15,24 +15,24 @@ export default function LinkField({ title, href, type, initialStatus }) {
       {linkIconInView &&
         <div className={css.linkIcon}><i className='bi bi-box-arrow-up-right'></i></div>
       }
-        <div className={css.type}><i className={`bi bi-${type}`}></i></div>
+        <div className={css.type}><i className={type}></i></div>
         <div className={css.title}>{title}</div>
       </div>
       <div className={css.status}>
         <div
-          className={status === 'saved' && css.selected}
+          className={status === 'saved' ? css.selected : undefined}
           onClick={() => { setStatus('saved') }}
         >
           <i className='bi bi-bookmark'></i>
         </div>
         <div
-          className={status === 'in focus' && css.selected}
+          className={status === 'in focus' ? css.selected : undefined}
           onClick={() => { setStatus('in focus') }}
         >
           <i className='bi bi-eyeglasses'></i>
         </div>
         <div
-          className={status === 'completed' && css.selected}
+          className={status === 'completed' ? css.selected : undefined}
           onClick={() => { setStatus('completed') }}
         >
           <i className='bi bi-check-all'></i>
