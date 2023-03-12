@@ -8,6 +8,10 @@
   align-items: center;
   gap: 40px;
   text-align: center;
+  & > i {
+    font-size: 100px;
+    color: #eee;
+  }
   & > h1 {
     max-width: 500px;
     font-weight: 500;
@@ -17,8 +21,7 @@
     font-weight: 400;
     color: #4f4f4f;
   }
-  & > i {
-    font-size: 100px;
-    color: #eee;
+  & > button {
+    margin-top: 30px;
   }
 }
