@@ -4,13 +4,12 @@ import css from '@/scss/Navbar.module.scss'
 export default function Navbar() {
   const { user } = useUser()
 
-  console.log(user)
-
   return (
     <div className={css.container}>
       <div className={css.center}>
         <div className={css.logo}>
-          <div>link</div><div>squirrel</div>
+          <div className={css.linkPartOfLogo}>link</div>
+          <div>squirrel</div>
         </div>
         <nav className={css.navLinks}>
           <div>discover</div>
