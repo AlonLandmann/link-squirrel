@@ -1,6 +1,26 @@
+import { useState } from 'react'
 import css from '@/scss/LinkForm.module.scss'
 
 export default function LinkForm({ setFormInView }) {
+  const [formData, setFormData] = useState({
+    href: '',
+    title: '',
+    type: '',
+    status: ''
+  })
+
+  function handleChange(event) {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [event.target.name]: event.target.value
+    }))
+  }
+  function handleSubmit(event) {
+    event.preventDefault()
+
+    window.alert(JSON.stringify(formData))
+  }
+
   return (
     <div className={css.popUpFormContainer}>
       <div className={css.popUpForm}>
@@ -11,24 +31,38 @@ export default function LinkForm({ setFormInView }) {
         >
           <i className='bi bi-x-lg soft-link'></i>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
+            name='href'
+            value={formData.href}
+            onChange={handleChange}
             type='text'
             placeholder='url'
           />
           <input
+            name='title'
+            value={formData.title}
+            onChange={handleChange}
             type='text'
             placeholder='title'
           />
-          <select>
-            <option value={null} selected>- type -</option>
+          <select
+            name='type'
+            value={formData.type}
+            onChange={handleChange}
+          >
+            <option value=''>- type -</option>
             <option value='video'>video</option>
             <option value='text'>text</option>
             <option value='course'>course</option>
             <option value='other'>other</option>
           </select>
-          <select>
-            <option value={null} selected>- status -</option>
+          <select
+            name='status'
+            value={formData.status}
+            onChange={handleChange}
+          >
+            <option value=''>- status -</option>
             <option value='bookmarked'>bookmarked</option>
             <option value='in focus'>in focus</option>
             <option value='completed'>completed</option>

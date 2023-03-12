@@ -14,7 +14,7 @@ export default function Home() {
         <div className={css.center}>
           <i className='bi bi-link-45deg'></i>
           <h1>Looks like you haven't saved any links yet.</h1>
-          <h3>Press the button below to add a new link!</h3>
+          <h3>Press the button below to add your first link!</h3>
           <button onClick = {() => { setFormInView(true) }}>
             add new link
           </button>
