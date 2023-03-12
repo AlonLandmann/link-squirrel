@@ -7,11 +7,16 @@
   margin: 0;
 }
 body,
-button {
+button,
+input,
+select {
   font-family: 'Rubik', sans-serif;
   font-size: 16px;
-  color: #222;
+  color: #282828;
   line-height: 1.4;
+}
+h1, h2, h3, h4, h5, h6, select {
+  color: #282828;
 }
 button {
   padding: 10px 20px;
@@ -25,5 +30,43 @@ button {
   &:hover {
     color: #fff;
     background: #5284ce;
+  }
+}
+input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  outline: none;
+  &:focus {
+    border: 1px solid #5284ce;
+    outline: 1px solid #5284ce;
+    &::placeholder {
+      color: #fff;
+    }
+  }
+  &::placeholder {
+    color: #ccc;
+  }
+}
+
+select {
+  appearance: none;
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  outline: none;
+  &:focus {
+    border: 1px solid #5284ce;
+    outline: 1px solid #5284ce;
+  }
+}
+.soft-link {
+  color: #ccc;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  &:hover {
+    color: #888;
   }
 }
