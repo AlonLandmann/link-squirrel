@@ -6,8 +6,8 @@ export default function LinkForm({ setLinks, setFormInView }) {
     {
       title: '',
       href: '',
-      type: '',
-      status: ''
+      type: 'video',
+      status: 'saved'
     }
   )
 
@@ -23,11 +23,14 @@ export default function LinkForm({ setLinks, setFormInView }) {
   function handleSubmit(event) {
     event.preventDefault()
 
-    let links = JSON.parse(localStorage.getItem('links')) || []
+    setLinks(prevLinks => {
+      const newLinks = [...prevLinks, formData]
 
-    links.push(formData)
-    localStorage.setItem('links', JSON.stringify(links))
-    setLinks(links)
+      localStorage.setItem('links', JSON.stringify(newLinks))
+      
+      return newLinks
+    })
+
     setFormInView(false)
   }
 
