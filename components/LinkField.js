@@ -1,31 +1,38 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import typeToIcon from '@/js/typeToIcon'
 import css from '@/scss/LinkField.module.scss'
 
-export default function LinkField({ title, href, type, initialStatus, setLinks }) {
-  const [status, setStatus] = useState(initialStatus)
+export default function LinkField({ link, setLinks }) {
   const [linkIconInView, setLinkIconInView] = useState(false)
-
-  useEffect(() => {
-    let links = JSON.parse(localStorage.getItem('links'))
-
-    links.forEach(link => {
-      if (link.href === href) {
-        link.status = status
-      }
-    })
-
-    localStorage.setItem('links', JSON.stringify(links))
-  }, [status])
 
   function removeLink(event) {
     event.stopPropagation()
 
-    let links = JSON.parse(localStorage.getItem('links'))
+    if (confirm('Are you sure you want to delete this link?')) {
+      setLinks(prevLinks => {
+        const newLinks = prevLinks.filter(prevLink => prevLink.href !== link.href)
 
-    links = links.filter(link => link.href !== href)
-    localStorage.setItem('links', JSON.stringify(links))
-    setLinks(links)
+        localStorage.setItem('links', JSON.stringify(newLinks))
+
+        return newLinks
+      })
+    }
+  }
+
+  function handleStatusChange(newStatus) {
+    setLinks(prevLinks => {
+      const newLinks = prevLinks.map(prevLink => {
+        if (prevLink.href === link.href) {
+          return { ...prevLink, status: newStatus }
+        }
+
+        return { ...prevLink }
+      })
+
+      localStorage.setItem('links', JSON.stringify(newLinks))
+
+      return newLinks
+    })
   }
 
   return (
@@ -33,7 +40,7 @@ export default function LinkField({ title, href, type, initialStatus, setLinks }
       <div
         onMouseEnter={() => { setLinkIconInView(true) }}
         onMouseLeave={() => { setLinkIconInView(false) }}
-        onClick={() => { window.open(href, '_blank').focus() }}
+        onClick={() => { window.open(link.href, '_blank').focus() }}
       >
         {linkIconInView &&
           <div className={css.linkIcon}>
@@ -46,28 +53,28 @@ export default function LinkField({ title, href, type, initialStatus, setLinks }
           </div>
         }
         <div className={css.type}>
-          <i className={typeToIcon(type)}></i>
+          <i className={typeToIcon(link.type)}></i>
         </div>
         <div className={css.title}>
-          {title}
+          {link.title}
         </div>
       </div>
       <div className={css.status}>
         <div
-          className={status === 'saved' ? css.selected : undefined}
-          onClick={() => { setStatus('saved') }}
+          className={link.status === 'saved' ? css.selected : undefined}
+          onClick={() => { handleStatusChange('saved') }}
         >
           <i className='bi bi-bookmark'></i>
         </div>
         <div
-          className={status === 'in focus' ? css.selected : undefined}
-          onClick={() => { setStatus('in focus') }}
+          className={link.status === 'in focus' ? css.selected : undefined}
+          onClick={() => { handleStatusChange('in focus') }}
         >
           <i className='bi bi-eyeglasses'></i>
         </div>
         <div
-          className={status === 'completed' ? css.selected : undefined}
-          onClick={() => { setStatus('completed') }}
+          className={link.status === 'completed' ? css.selected : undefined}
+          onClick={() => { handleStatusChange('completed') }}
         >
           <i className='bi bi-check-all'></i>
         </div>
