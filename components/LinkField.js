@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import css from '@/scss/LinkField.module.scss'
 
-export default function LinkField({ title, href, type, initialStatus }) {
+export default function LinkField({ title, href, type, initialStatus, setLinks }) {
   const [status, setStatus] = useState(initialStatus)
   const [linkIconInView, setLinkIconInView] = useState(false)
 
@@ -17,6 +17,17 @@ export default function LinkField({ title, href, type, initialStatus }) {
     localStorage.setItem('links', JSON.stringify(links))
   }, [status])
 
+  function removeLink(event) {
+    event.stopPropagation()
+
+    let links = JSON.parse(localStorage.getItem('links'))
+
+    links = links.filter(link => link.href !== href)
+
+    localStorage.setItem('links', JSON.stringify(links))
+    setLinks(links)
+  }
+
   return (
     <div className={css.link}>
       <div
@@ -26,6 +37,9 @@ export default function LinkField({ title, href, type, initialStatus }) {
       >
       {linkIconInView &&
         <div className={css.linkIcon}><i className='bi bi-box-arrow-up-right'></i></div>
+      }
+      {linkIconInView &&
+        <div className={css.trashIcon} onClick={removeLink}><i className='bi bi-trash3'></i></div>
       }
         <div className={css.type}><i className={type}></i></div>
         <div className={css.title}>{title}</div>

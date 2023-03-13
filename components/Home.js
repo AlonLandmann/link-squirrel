@@ -33,6 +33,7 @@ export default function Home() {
                     href={link.href}
                     type={typeToIcon(link.type)}
                     initialStatus={link.status}
+                    setLinks={setLinks}
                   />
                 ))}
               </div>

@@ -15,7 +15,23 @@
   right: 10px;
   font-size: 15px;
   color: #bbb;
-  transition: all 0.5s ease;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  &:hover {
+    color: #888;
+  }
+}
+.trashIcon {
+  position: absolute;
+  top: 36px;
+  right: 11px;
+  font-size: 15px;
+  color: #bbb;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  &:hover {
+    color: #888;
+  }
 }
 .type {
   padding: 40px 40px 15px;
