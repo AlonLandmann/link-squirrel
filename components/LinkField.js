@@ -1,10 +1,7 @@
-import { useState } from 'react'
 import typeToIcon from '@/js/typeToIcon'
 import css from '@/scss/LinkField.module.scss'
 
 export default function LinkField({ link, setLinks }) {
-  const [linkIconInView, setLinkIconInView] = useState(false)
-
   function removeLink(event) {
     event.stopPropagation()
 
@@ -37,26 +34,18 @@ export default function LinkField({ link, setLinks }) {
 
   return (
     <div className={css.link}>
-      <div
-        onMouseEnter={() => { setLinkIconInView(true) }}
-        onMouseLeave={() => { setLinkIconInView(false) }}
-        onClick={() => { window.open(link.href, '_blank').focus() }}
-      >
-        {linkIconInView &&
-          <div className={css.linkIcon}>
-            <i className='bi bi-box-arrow-up-right'></i>
-          </div>
-        }
-        {linkIconInView &&
-          <div className={css.trashIcon} onClick={removeLink}>
-            <i className='bi bi-trash3'></i>
-          </div>
-        }
+      <div onClick={() => { window.open(link.href, '_blank').focus() }}>
         <div className={css.type}>
           <i className={typeToIcon(link.type)}></i>
         </div>
         <div className={css.title}>
           {link.title}
+        </div>
+        <div className={css.linkIcon}>
+          <i className='bi bi-box-arrow-up-right'></i>
+        </div>
+        <div className={css.trashIcon} onClick={removeLink}>
+          <i className='bi bi-trash3'></i>
         </div>
       </div>
       <div className={css.status}>

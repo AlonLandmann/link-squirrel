@@ -9,10 +9,14 @@
   border-radius: 3px;
   &:hover {
     box-shadow: 0 0 2px colors.$box-shadows;
+    .linkIcon, .trashIcon {
+      display: block;
+    }
   }
 }
 .linkIcon, .trashIcon {
   @include general.softLink;
+  display: none;
   position: absolute;
   font-size: 15px;
   color: #bbb;
