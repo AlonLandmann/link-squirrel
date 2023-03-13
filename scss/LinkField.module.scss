@@ -9,25 +9,19 @@
   border-radius: 3px;
   &:hover {
     box-shadow: 0 0 2px colors.$box-shadows;
-    .linkIcon, .trashIcon {
+    .trashIcon {
       display: block;
     }
   }
 }
-.linkIcon, .trashIcon {
+.trashIcon {
   @include general.softLink;
   display: none;
   position: absolute;
-  font-size: 15px;
-  color: #bbb;
-}
-.linkIcon {
   top: 8px;
   right: 10px;
-}
-.trashIcon {
-  top: 36px;
-  right: 11px;
+  font-size: 15px;
+  color: #bbb;
 }
 .type {
   padding: 40px 40px 15px;
