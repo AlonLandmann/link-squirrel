@@ -8,8 +8,12 @@ export default function Navbar() {
     <div className={css.container}>
       <div className={css.center}>
         <div className={css.logo}>
-          <div className={css.linkPartOfLogo}>link</div>
-          <div>squirrel</div>
+          <div className={css.logoHighlight}>
+            link
+          </div>
+          <div>
+            squirrel
+          </div>
         </div>
         <nav className={css.navLinks}>
           <div>discover</div>
@@ -26,7 +30,7 @@ export default function Navbar() {
         {user &&
           <div className={css.accountButton}>
             <button onClick={() => { location.replace('api/auth/logout') }}>
-              {user.email.slice(0, 2).toUpperCase()}
+              {user.email.charAt(0).toUpperCase()}
             </button>
           </div>
         }
