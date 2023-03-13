@@ -18,7 +18,6 @@ export default function Navbar() {
         <nav className={css.navLinks}>
           <div>discover</div>
           <div>my links</div>
-          <div>contact</div>
         </nav>
         {!user &&
           <div className={css.loginButton}>
