@@ -32,6 +32,10 @@ export default function Home() {
                   setLinks={setLinks}
                 />
               ))}
+              <div className={css.add} onClick={() => { setFormInView(true) }}>
+                <i className='bi bi-plus-lg'></i>
+                <div>add link</div>
+              </div>
             </div>
           </>
         }
@@ -40,11 +44,11 @@ export default function Home() {
             <i className='bi bi-link-45deg'></i>
             <h1>Looks like you haven't saved any links yet.</h1>
             <h3>Press the button below to add your first link!</h3>
+            <button onClick={() => { setFormInView(true) }}>
+              add link
+            </button>
           </>
         }
-        <button onClick={() => { setFormInView(true) }}>
-          add link
-        </button>
       </div>
       {formInView &&
         <LinkForm
