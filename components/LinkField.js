@@ -1,9 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import css from '@/scss/LinkField.module.scss'
 
 export default function LinkField({ title, href, type, initialStatus }) {
   const [status, setStatus] = useState(initialStatus)
   const [linkIconInView, setLinkIconInView] = useState(false)
+
+  useEffect(() => {
+    let links = JSON.parse(localStorage.getItem('links'))
+
+    links.forEach(link => {
+      if (link.href === href) {
+        link.status = status
+      }
+    })
+
+    localStorage.setItem('links', JSON.stringify(links))
+  }, [status])
 
   return (
     <div className={css.link}>

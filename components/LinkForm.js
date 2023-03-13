@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import css from '@/scss/LinkForm.module.scss'
 
-export default function LinkForm({ setFormInView }) {
+export default function LinkForm({ setFormInView, setLinks }) {
   const [formData, setFormData] = useState({
     title: '',
     href: '',
@@ -23,6 +23,8 @@ export default function LinkForm({ setFormInView }) {
     links.push(formData)
     localStorage.setItem('links', JSON.stringify(links))
     setFormInView(false)
+
+    setLinks(links)
   }
 
   return (

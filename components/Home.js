@@ -21,7 +21,7 @@ export default function Home() {
 
       <div>
         <div className={css.center}>
-          {!loading && links.length > 0 &&
+          {!loading && links && links.length > 0 &&
             <>
               <h1>library</h1>
 
@@ -39,7 +39,7 @@ export default function Home() {
             </>
 
           }
-          {!loading && links.length === 0 &&
+          {!loading && (!links || links.length === 0) &&
             <>
               <i className='bi bi-link-45deg'></i>
               <h1>Looks like you haven't saved any links yet.</h1>
@@ -53,7 +53,7 @@ export default function Home() {
       </div>
 
       {formInView &&
-        <LinkForm setFormInView={setFormInView} />
+        <LinkForm setFormInView={setFormInView} setLinks={setLinks} />
       }
     </div>
   )
