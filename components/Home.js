@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import Navbar from '@/components/Navbar'
 import LinkField from '@/components/LinkField'
 import LinkForm from '@/components/LinkForm'
-import typeToIcon from '@/js/typeToIcon'
 import css from '@/scss/Home.module.scss'
 
 export default function Home() {
@@ -31,7 +30,7 @@ export default function Home() {
                     key={link.href}
                     title={link.title}
                     href={link.href}
-                    type={typeToIcon(link.type)}
+                    type={link.type}
                     initialStatus={link.status}
                     setLinks={setLinks}
                   />
