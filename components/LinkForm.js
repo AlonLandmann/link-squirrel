@@ -1,56 +1,62 @@
 import { useState } from 'react'
 import css from '@/scss/LinkForm.module.scss'
 
-export default function LinkForm({ setFormInView, setLinks }) {
-  const [formData, setFormData] = useState({
-    title: '',
-    href: '',
-    type: '',
-    status: ''
-  })
+export default function LinkForm({ setLinks, setFormInView }) {
+  const [formData, setFormData] = useState(
+    {
+      title: '',
+      href: '',
+      type: '',
+      status: ''
+    }
+  )
 
   function handleChange(event) {
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [event.target.name]: event.target.value
-    }))
+    setFormData(prevFormData => (
+      {
+        ...prevFormData,
+        [event.target.name]: event.target.value
+      }
+    ))
   }
+
   function handleSubmit(event) {
     event.preventDefault()
 
-    const links = JSON.parse(localStorage.getItem('links')) || []
+    let links = JSON.parse(localStorage.getItem('links')) || []
 
     links.push(formData)
     localStorage.setItem('links', JSON.stringify(links))
-    setFormInView(false)
-
     setLinks(links)
+    setFormInView(false)
   }
 
   return (
-    <div className={css.popUpFormContainer}>
-      <div className={css.popUpForm}>
-        <h2>Link Form</h2>
+    <div className={css.container}>
+      <div className={css.popUpField}>
         <div
-          className={css.escapeFormButton}
+          className={css.escapeButton}
           onClick={() => { setFormInView(false) }}
         >
           <i className='bi bi-x-lg soft-link'></i>
         </div>
+        <h2>
+          Link Form
+        </h2>
         <form onSubmit={handleSubmit}>
           <input
             name='title'
-            value={formData.title}
-            onChange={handleChange}
             type='text'
             placeholder='title'
+            value={formData.title}
+            onChange={handleChange}
           />
           <input
             name='href'
-            value={formData.href}
-            onChange={handleChange}
             type='text'
             placeholder='url'
+            value={formData.href}
+            onChange={handleChange}
           />
           <select
             name='type'
@@ -73,7 +79,9 @@ export default function LinkForm({ setFormInView, setLinks }) {
             <option value='in focus'>in focus</option>
             <option value='completed'>completed</option>
           </select>
-          <button>add link</button>
+          <button>
+            add link
+          </button>
         </form>
       </div>
     </div>

@@ -1,14 +1,17 @@
-.popUpFormContainer {
+@use '@/scss/colors';
+@use '@/scss/general';
+
+.container {
   position: fixed;
   top: 0;
   height: 100vh;
   width: 100vw;
-  background-color: #131313c1;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: colors.$dark-overlay;
 }
-.popUpForm {
+.popUpField {
   position: relative;
   min-width: 600px;
   padding: 40px 45px;
@@ -17,7 +20,6 @@
   border: 1px solid #bbb;
   & > h2 {
     margin-bottom: 35px;
-    font-weight: 500;
     text-align: center;
   }
   & > form {
@@ -30,10 +32,11 @@
     }
   }
 }
-.escapeFormButton {
-  padding: 5px 8px;
-  font-size: 18px;
+.escapeButton {
+  @include general.softLink;
   position: absolute;
   top: 12px;
   right: 12px;
+  padding: 5px 8px;
+  font-size: 18px;
 }
