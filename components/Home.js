@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import Navbar from '@/components/Navbar'
 import LinkField from '@/components/LinkField'
 import LinkForm from '@/components/LinkForm'
+import Navbar from '@/components/Navbar'
 import css from '@/scss/Home.module.scss'
 
 export default function Home() {
@@ -17,13 +17,17 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-
-      <div>
+      {formInView &&
+        <LinkForm
+          setFormInView={setFormInView}
+          setLinks={setLinks}
+        />
+      }
+      {!loading &&
         <div className={css.center}>
-          {!loading && links && links.length > 0 &&
+          {links && links.length > 0 &&
             <>
               <h1>library</h1>
-
               <div className={css.links}>
                 {links.map(link => (
                   <LinkField
@@ -37,9 +41,8 @@ export default function Home() {
                 ))}
               </div>
             </>
-
           }
-          {!loading && (!links || links.length === 0) &&
+          {(!links || links.length > 0) &&
             <>
               <i className='bi bi-link-45deg'></i>
               <h1>Looks like you haven't saved any links yet.</h1>
@@ -50,10 +53,6 @@ export default function Home() {
             add link
           </button>
         </div>
-      </div>
-
-      {formInView &&
-        <LinkForm setFormInView={setFormInView} setLinks={setLinks} />
       }
     </div>
   )
